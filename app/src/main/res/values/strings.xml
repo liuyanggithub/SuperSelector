@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SuperSelector</string>
+    <string name="no_write_external_storage_permission">没有文件写权限，请开启该权限</string>
+    <string name="no_read_external_storage_permission">没有文件读权限，请开启该权限</string>
+</resources>
