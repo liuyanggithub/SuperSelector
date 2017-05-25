@@ -14,6 +14,10 @@
 - 框架搭建完毕
 - 完成图片选择和预览 
 
+## **截图**
+#### 选择图片
+![](./ImageSelect.gif) ![](./ImageSelect.jpg)
+
 ## **About me**
 * [Email](LYYX@outlook.com)
 * [WeiBo](http://weibo.com/liuyang6)
