@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public class SelectorParamContext implements Serializable {
 	
 	protected int maxCount;//最大选图数量
-	protected boolean hasQulityMenu;//是否有图片清晰度选项
-	protected boolean isHighQulity;//是否高清 
-	protected boolean isMult;//是否多选
+	protected boolean hasQualityMenu;//是否有图片清晰度选项
+	protected boolean isHighQuality;//是否高清
+	protected boolean isMulti;//是否多选
 	protected ArrayList<String> selectedFile; //选中图片path
 	
 	/**
@@ -19,16 +19,16 @@ public class SelectorParamContext implements Serializable {
 	 */
 	public static final String TAG_SELECTOR = "SelectorParamContext";
 	private static final long serialVersionUID = 1L;
-	public static final int MAXCOUNT = 9;
-	public static final int mcolor = 0xff0072c6;
-	public static final int gcolor = 0xffcccccc;
+	public static final int MAX_COUNT = 9;//最多选择张数
+	public static final int mcolor = 0xff0072c6;//预览按钮文字颜色(可点击)
+	public static final int gcolor = 0xffcccccc;//预览按钮文字颜色(不可点击)
 	public static final String[]menuItems = new String[] {"标清","原图"};
 
 	public SelectorParamContext() {
-		maxCount = MAXCOUNT;
-		isMult = true;
-		hasQulityMenu = true;
-		isHighQulity = false;
+		maxCount = MAX_COUNT;
+		isMulti = true;
+		hasQualityMenu = true;
+		isHighQuality = false;
 		selectedFile = new ArrayList<String>();
 	}
 
@@ -40,28 +40,28 @@ public class SelectorParamContext implements Serializable {
 		this.maxCount = maxCount;
 	}
 
-	public boolean isMult() {
-		return isMult;
+	public boolean isMulti() {
+		return isMulti;
 	}
 
-	public void setMult(boolean isMult) {
-		this.isMult = isMult;
+	public void setMulti(boolean isMult) {
+		this.isMulti = isMult;
 	}
 
 	public boolean hasQulityMenu() {
-		return hasQulityMenu;
+		return hasQualityMenu;
 	}
 
-	public void setHasQulityMenu(boolean hasQulityMenu) {
-		this.hasQulityMenu = hasQulityMenu;
+	public void setHasQualityMenu(boolean hasQualityMenu) {
+		this.hasQualityMenu = hasQualityMenu;
 	}
 
-	public boolean isHighQulity() {
-		return isHighQulity;
+	public boolean isHighQuality() {
+		return isHighQuality;
 	}
 
-	public void setHighQulity(boolean isHighQulity) {
-		this.isHighQulity = isHighQulity;
+	public void setHighQuality(boolean isHighQulity) {
+		this.isHighQuality = isHighQulity;
 	}
 	
 	public ArrayList<String> getSelectedFile() {
@@ -77,7 +77,7 @@ public class SelectorParamContext implements Serializable {
 	}
 	
 	public String getQuality(){
-		return menuItems[isHighQulity?1:0];
+		return menuItems[isHighQuality ?1:0];
 	}
 	
 	public boolean isAvaliable(){

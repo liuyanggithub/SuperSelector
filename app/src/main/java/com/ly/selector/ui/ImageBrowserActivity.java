@@ -22,11 +22,11 @@ import uk.co.senab.photoview.PhotoView;
 
 /**
  * 图片预览
- *
- * @author qiao
- *         2015-3-19
  */
 public class ImageBrowserActivity extends BaseActivity<ImageBrowserView, ImageBrowserPresenter>implements ImageBrowserView {
+    /**
+     * 从图片选择页面传过来的图片列表
+     */
     private List<String> dataList;
 
     @Bind(R.id.view_pager)

@@ -24,7 +24,7 @@ import static android.view.View.VISIBLE;
 
 /**
  * <Pre>
- * TODO 描述该文件做什么
+ * 图片瀑布流适配器
  * </Pre>
  *
  * @author 刘阳

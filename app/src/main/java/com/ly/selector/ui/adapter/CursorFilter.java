@@ -5,7 +5,7 @@ import android.widget.Filter;
 
 /**
  * <Pre>
- * TODO 描述该文件做什么
+ * 游标筛选器
  * </Pre>
  *
  * @author 刘阳

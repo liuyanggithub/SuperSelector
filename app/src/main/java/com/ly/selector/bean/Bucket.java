@@ -1,9 +1,7 @@
 package com.ly.selector.bean;
 
 /**
- * 相册
- * @author qiao
- * 2015-3-18
+ * 相册实体类
  */
 public class Bucket {
 	public int bucketId;

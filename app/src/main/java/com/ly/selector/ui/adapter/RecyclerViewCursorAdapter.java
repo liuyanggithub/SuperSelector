@@ -12,7 +12,7 @@ import android.widget.Filterable;
 
 /**
  * <Pre>
- * TODO 描述该文件做什么
+ * RecyclerView可以使用的CursorAdapter
  * </Pre>
  *
  * @author 刘阳

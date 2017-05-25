@@ -26,7 +26,9 @@ import java.util.ArrayList;
  */
 
 public class ImageSelectorPresenter extends BasePresenter<ImageSelectorView> {
+    //图片瀑布流适配器
     private GridImageAdapter imageAdapter;
+    //游标
     private Cursor mCursor;
     /**
      * 初始化数据
@@ -60,10 +62,20 @@ public class ImageSelectorPresenter extends BasePresenter<ImageSelectorView> {
         }.start();
     }
 
+    /**
+     * 所有图片的相册关联里面的图片
+     * @param paramContext 配置
+     */
+
     public void bindAllImageGridView(SelectorParamContext paramContext){
         bindImageGridView(mCursor, paramContext);
     }
 
+    /**
+     * 关联相册和相册下的图片
+     * @param cursor 游标
+     * @param paramContext 配置
+     */
     public void bindImageGridView(Cursor cursor, final SelectorParamContext paramContext) {
         if (imageAdapter != null) {
             imageAdapter.changeCursor(cursor);
@@ -72,7 +84,7 @@ public class ImageSelectorPresenter extends BasePresenter<ImageSelectorView> {
 
                 @Override
                 public void onItemClick(ItemViewHolder holder, String path) {
-                    if (!paramContext.isMult()) {
+                    if (!paramContext.isMulti()) {
                         getMvpView().singleClick(path);
                     } else if (paramContext.isChecked(path)) { //取消选中
                         holder.setChecked(false);
@@ -88,29 +100,14 @@ public class ImageSelectorPresenter extends BasePresenter<ImageSelectorView> {
             getMvpView().setImageGridAdapter(imageAdapter);
         }
     }
-    public void bindBucketListView(ArrayList<Bucket> bucketList, final SelectorParamContext paramContext) {
+
+    /**
+     * 初始化相册列表
+     * @param bucketList 相册列表数组
+     * @param paramContext 配置
+     */
+    public void initBucketListView(ArrayList<Bucket> bucketList, final SelectorParamContext paramContext) {
         if (bucketList == null) return;
-//        BaseAdapter adapter = new BaseAdapter<Bucket>(getContext(), bucketList) {
-//            @Override
-//            public View getView(final int position, View convertView, ViewGroup parent) {
-//                if (convertView == null) {
-//                    convertView = new BucketView(context);
-//                }
-//                BucketView item = (BucketView) convertView;
-//                final Bucket bucket = (Bucket) getItem(position);
-//                item.setView(bucket);
-//
-//                item.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        getMvpView().setBucketTitleView(bucket.bucketName);
-//                        bindImageGridView(MediaHelper.getImagesCursor(context, bucket.bucketId + ""));
-//                        getMvpView().hideAlbum();
-//                    }
-//                });
-//                return item;
-//            }
-//        };
         BucketListAdapter adapter = new BucketListAdapter(getContext(), bucketList){
             @Override
             public void onItemClick(Bucket bucket) {

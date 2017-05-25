@@ -236,8 +236,8 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
             @Override
             public void run() {
                 presenter.bindAllImageGridView(paramContext);
-                presenter.bindBucketListView(bucketList, paramContext);
-                if (paramContext.isMult()) {
+                presenter.initBucketListView(bucketList, paramContext);
+                if (paramContext.isMulti()) {
                     findViewById(R.id.pic_browser_bottom).setVisibility(View.VISIBLE);
                     refreshUi();
                 } else {
@@ -325,7 +325,7 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
 //            @Override
 //            public void invoke(Integer index) {
 //                actionSheet.hide();
-//                paramContext.setHighQulity(index == 1);
+//                paramContext.setHighQuality(index == 1);
 ////				picQuality.setText(paramContext.getQuality());
 //            }
 //        });
@@ -346,7 +346,7 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
             browserView.setEnabled(false);
             changeCropViewStatus(false);
         }
-//		picQuality.setVisibility(paramContext.hasQulityMenu() ?View.VISIBLE:View.INVISIBLE);
+//		picQuality.setVisibility(paramContext.hasQualityMenu() ?View.VISIBLE:View.INVISIBLE);
     }
 
     @Override

@@ -31,5 +31,9 @@ public abstract class BaseActivity<V extends BaseView,T extends BasePresenter<V>
 
     public abstract T initPresenter();
 
+    /**
+     * 设置activity的布局文件，用于butterknife的绑定
+     * @return
+     */
     public abstract int setContentViewID();
 }

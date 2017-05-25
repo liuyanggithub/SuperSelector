@@ -21,6 +21,10 @@ import java.util.List;
  */
 
 public class ImageBrowserPresenter extends BasePresenter<ImageBrowserView> {
+    /**
+     * 初始化数据
+     * @return 从图片选择界面传来的图片数组
+     */
     public List<String> initData() {
         if(!isActivityAlive()){
             return null;

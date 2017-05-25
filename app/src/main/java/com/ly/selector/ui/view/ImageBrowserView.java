@@ -4,7 +4,7 @@ import com.ly.selector.basemvp.BaseView;
 
 /**
  * <Pre>
- * TODO 描述该文件做什么
+ *     图片预览界面操作接口
  * </Pre>
  *
  * @author 刘阳

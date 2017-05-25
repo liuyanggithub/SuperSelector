@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 
 /**
  * <Pre>
- * TODO 描述该文件做什么
+ * 相册列表适配器
  * </Pre>
  *
  * @author 刘阳
