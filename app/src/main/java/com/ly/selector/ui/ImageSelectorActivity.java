@@ -27,6 +27,8 @@ import com.ly.selector.ui.adapter.BucketListAdapter;
 import com.ly.selector.ui.adapter.GridImageAdapter;
 import com.ly.selector.ui.view.ImageSelectorView;
 import com.ly.selector.util.AnimUtil;
+import com.ly.selector.util.CommonFileUtils;
+import com.ly.selector.util.Crop;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -163,8 +165,8 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
             return;
         }
         switch (requestCode) {
-//            case Crop.REQUEST_CROP:
-////                Toast.makeText(getApplicationContext(), mCameraCropUri.getPath(),Toast.LENGTH_SHORT).show();
+            case Crop.REQUEST_CROP:
+                Toast.makeText(getApplicationContext(), mCameraCropUri.getPath(),Toast.LENGTH_SHORT).show();
 //                Intent intent = new Intent();
 //                intent.putExtra("crop",  mCameraCropUri.getPath());
 //                setResult(RESULT_OK, intent);
@@ -433,8 +435,8 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
      * @param source
      */
     private void beginCrop(Uri source) {
-//        mCameraCropUri = Uri.fromFile(CommonFileUtils.generateExternalImageCacheFileName(this, "img_crop_", ".jpg"));
-//        Crop.of(source, mCameraCropUri).asSquare().start(this);
+        mCameraCropUri = Uri.fromFile(CommonFileUtils.generateExternalImageCacheFileName(this, "img_crop_", ".jpg"));
+        Crop.of(source, mCameraCropUri).asSquare().start(this);
     }
 
     @Override
