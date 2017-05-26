@@ -88,10 +88,11 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
 
     @OnClick(R.id.btn_ok)
     void clickOkView() {
-        Intent intent = new Intent();
+//        Intent intent = new Intent();
 //		intent.putExtra("filePath", getPathString(paramContext.getSelectedFile()));
-        intent.putExtra(SelectorParamContext.TAG_SELECTOR, paramContext);
-        setResult(RESULT_OK, intent);
+//        intent.putExtra(SelectorParamContext.TAG_SELECTOR, paramContext);
+//        setResult(RESULT_OK, intent);
+        showMessage(presenter.getPathString(paramContext.getSelectedFile()));
         this.finish();
     }
 
@@ -353,7 +354,7 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
 
     @Override
     public void showMessage(String msg) {
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT);
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -488,6 +489,6 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
      * @param tip
      */
     private void showNoPermissionTip(String tip) {
-        Toast.makeText(this, tip, Toast.LENGTH_LONG).show();
+        showMessage(tip);
     }
 }

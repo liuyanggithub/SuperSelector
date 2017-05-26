@@ -119,7 +119,7 @@ public class ImageSelectorPresenter extends BasePresenter<ImageSelectorView> {
         getMvpView().setBucketListViewAdapter(adapter);
     }
 
-    private String getPathString(ArrayList<String> list) {
+    public String getPathString(ArrayList<String> list) {
         if (list.size() <= 0)
             return "";
         String text = list.get(0);

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <include
-        android:id="@+id/done_cancel_bar"
-        layout="@layout/crop__layout_done_cancel" />
 
     <com.ly.selector.customview.CropImageView
         xmlns:custom="http://schemas.android.com/apk/res-auto"
@@ -18,7 +15,12 @@
         custom:handleColor="@android:color/holo_blue_dark"
         android:id="@+id/crop_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@drawable/crop__texture"
-        android:layout_below="@id/done_cancel_bar" />
-</RelativeLayout>
+         />
+
+    <include
+        android:id="@+id/done_cancel_bar"
+        layout="@layout/crop_layout_done_cancel" />
+</LinearLayout>

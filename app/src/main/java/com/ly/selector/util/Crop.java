@@ -12,7 +12,7 @@ import android.provider.MediaStore;
 import android.widget.Toast;
 
 import com.ly.selector.R;
-import com.ly.selector.ui.CropImageActivity2;
+import com.ly.selector.ui.CropImageActivity;
 
 /**
  * Builder for crop Intents and utils for handling result
@@ -152,7 +152,7 @@ public class Crop {
      */
     public Intent getIntent(Context context) {
 //        cropIntent.setClass(context, CropImageActivity.class);
-        cropIntent.setClass(context, CropImageActivity2.class);
+        cropIntent.setClass(context, CropImageActivity.class);
         return cropIntent;
     }
 

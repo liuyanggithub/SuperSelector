@@ -45,7 +45,7 @@ import java.io.OutputStream;
 /*
  * Modified from original in AOSP.
  */
-public class CropImageActivity2 extends MonitoredActivity {
+public class CropImageActivity extends MonitoredActivity {
 
     private static final int SIZE_DEFAULT = 2048;
     private static final int SIZE_LIMIT = 4096;
@@ -90,7 +90,7 @@ public class CropImageActivity2 extends MonitoredActivity {
     }
 
     private void setupViews() {
-        setContentView(R.layout.crop__activity_crop2);
+        setContentView(R.layout.activity_crop);
 
         imageView = (CropImageView) findViewById(R.id.crop_image);
 
