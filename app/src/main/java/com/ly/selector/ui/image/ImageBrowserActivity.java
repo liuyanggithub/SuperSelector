@@ -1,4 +1,4 @@
-package com.ly.selector.ui;
+package com.ly.selector.ui.image;
 
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;

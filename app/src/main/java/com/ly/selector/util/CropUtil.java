@@ -29,7 +29,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.ly.selector.ui.MonitoredActivity;
+import com.ly.selector.ui.crop.MonitoredActivity;
 
 import java.io.Closeable;
 import java.io.File;

@@ -12,7 +12,7 @@ import android.provider.MediaStore;
 import android.widget.Toast;
 
 import com.ly.selector.R;
-import com.ly.selector.ui.CropImageActivity;
+import com.ly.selector.ui.crop.CropImageActivity;
 
 /**
  * Builder for crop Intents and utils for handling result

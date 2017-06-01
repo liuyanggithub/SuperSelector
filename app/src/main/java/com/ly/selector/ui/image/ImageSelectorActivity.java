@@ -1,4 +1,4 @@
-package com.ly.selector.ui;
+package com.ly.selector.ui.image;
 
 import android.Manifest;
 import android.content.Intent;

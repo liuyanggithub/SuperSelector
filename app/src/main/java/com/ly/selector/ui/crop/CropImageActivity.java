@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ly.selector.ui;
+package com.ly.selector.ui.crop;
 
 import android.annotation.TargetApi;
 import android.content.Intent;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.ly.selector.ui;
+package com.ly.selector.ui.crop;
 
 import android.app.Activity;
 import android.os.Bundle;

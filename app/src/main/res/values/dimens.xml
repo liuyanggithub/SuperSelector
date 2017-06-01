@@ -3,4 +3,8 @@
     <dimen name="toolbar_padding_top">25dp</dimen>
 
     <dimen name="crop__bar_height">56dp</dimen>
+
+    <dimen name="image_thumbnail_size">100dp</dimen>
+    <dimen name="image_thumbnail_spacing">1dp</dimen>
+    <dimen name="height_top_bar">48dp</dimen>
 </resources>
