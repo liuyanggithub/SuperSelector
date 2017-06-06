@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
-public class ImageGridActivity extends AppCompatActivity {
+public class VideoSelectorActivity extends AppCompatActivity {
 
 	private static final String TAG = "ImageGridActivity";
 
@@ -18,7 +18,7 @@ public class ImageGridActivity extends AppCompatActivity {
 
         if (getSupportFragmentManager().findFragmentByTag(TAG) == null) {
             final FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.add(android.R.id.content, new ImageGridFragment(), TAG);
+            ft.add(android.R.id.content, new VideoSelectorFragment(), TAG);
             ft.commit();
         }
     }

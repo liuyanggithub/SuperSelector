@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.ly.selector.basemvp.BaseActivity;
 import com.ly.selector.presenter.MainPresenter;
 import com.ly.selector.ui.image.ImageSelectorActivity;
-import com.ly.selector.ui.video.ImageGridActivity;
+import com.ly.selector.ui.video.VideoSelectorActivity;
 import com.ly.selector.ui.view.MainView;
 
 import butterknife.Bind;
@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     }
     @OnClick(R.id.btn_video)
     void clickBtnVideo(){
-        Intent intent = new Intent(this, ImageGridActivity.class);
+        Intent intent = new Intent(this, VideoSelectorActivity.class);
         startActivity(intent);
     }
     @Override

@@ -8,7 +8,7 @@ import android.os.Build;
 import android.os.Build.VERSION_CODES;
 import android.os.StrictMode;
 
-import com.ly.selector.ui.video.ImageGridActivity;
+import com.ly.selector.ui.video.VideoSelectorActivity;
 
 import java.util.Comparator;
 import java.util.List;
@@ -36,7 +36,7 @@ public class Utils {
             if (Utils.hasHoneycomb()) {
                 threadPolicyBuilder.penaltyFlashScreen();
                 vmPolicyBuilder
-                        .setClassInstanceLimit(ImageGridActivity.class, 1);
+                        .setClassInstanceLimit(VideoSelectorActivity.class, 1);
             }
             StrictMode.setThreadPolicy(threadPolicyBuilder.build());
             StrictMode.setVmPolicy(vmPolicyBuilder.build());

@@ -39,7 +39,7 @@ import com.ly.selector.util.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ImageGridFragment extends Fragment implements OnItemClickListener {
+public class VideoSelectorFragment extends Fragment implements OnItemClickListener {
 
     private static final String TAG = "ImageGridFragment";
     private int mImageThumbSize;
@@ -51,7 +51,7 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
     /**
      * Empty constructor as per the Fragment documentation
      */
-    public ImageGridFragment() {
+    public VideoSelectorFragment() {
     }
 
     @Override
@@ -82,7 +82,7 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.video_image_grid_fragment,
+        final View v = inflater.inflate(R.layout.fragment_video_selector,
                 container, false);
         final GridView mGridView = (GridView) v.findViewById(R.id.gridView);
         Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
@@ -92,7 +92,7 @@ public class ImageGridFragment extends Fragment implements OnItemClickListener {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((ImageGridActivity) getActivity()).back();
+                ((VideoSelectorActivity) getActivity()).back();
             }
         });
         mGridView.setAdapter(mAdapter);

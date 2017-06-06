@@ -28,7 +28,7 @@
         <activity android:name=".ui.image.ImageSelectorActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.image.ImageBrowserActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.crop.CropImageActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.video.ImageGridActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.video.VideoSelectorActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
