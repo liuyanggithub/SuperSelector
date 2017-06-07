@@ -22,6 +22,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ly.selector.R;
 import com.ly.selector.basemvp.BaseFragment;
@@ -75,6 +76,7 @@ public class VideoSelectorFragment extends BaseFragment<VideoSelectorView, Video
                 Intent intent = getActivity().getIntent().putExtra("path", vEntty.filePath).putExtra("dur", vEntty.duration);
                 getActivity().setResult(Activity.RESULT_OK, intent);
                 getActivity().finish();
+                Toast.makeText(getContext(), vEntty.filePath, Toast.LENGTH_SHORT).show();
             }
         };
 
