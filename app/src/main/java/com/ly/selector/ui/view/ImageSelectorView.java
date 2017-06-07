@@ -3,7 +3,7 @@ package com.ly.selector.ui.view;
 import com.ly.selector.basemvp.BaseView;
 import com.ly.selector.bean.Bucket;
 import com.ly.selector.ui.adapter.BucketListAdapter;
-import com.ly.selector.ui.adapter.GridImageAdapter;
+import com.ly.selector.ui.adapter.ImageSelectorAdapter;
 
 import java.util.ArrayList;
 
@@ -58,7 +58,7 @@ public interface ImageSelectorView extends BaseView {
      * 设置图片瀑布流适配器
      * @param adapter
      */
-    void setImageGridAdapter(GridImageAdapter adapter);
+    void setImageGridAdapter(ImageSelectorAdapter adapter);
 
     /**
      * 设置相册列表适配器

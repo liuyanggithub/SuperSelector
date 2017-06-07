@@ -24,7 +24,7 @@ import com.ly.selector.bean.Bucket;
 import com.ly.selector.bean.SelectorParamContext;
 import com.ly.selector.presenter.ImageSelectorPresenter;
 import com.ly.selector.ui.adapter.BucketListAdapter;
-import com.ly.selector.ui.adapter.GridImageAdapter;
+import com.ly.selector.ui.adapter.ImageSelectorAdapter;
 import com.ly.selector.ui.view.ImageSelectorView;
 import com.ly.selector.util.AnimUtil;
 import com.ly.selector.util.CommonFileUtils;
@@ -220,17 +220,6 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
                 finish();
             }
         });
-        imageGridView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-            }
-        });
     }
 
     @Override
@@ -281,7 +270,7 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
     }
 
     @Override
-    public void setImageGridAdapter(GridImageAdapter adapter) {
+    public void setImageGridAdapter(ImageSelectorAdapter adapter) {
         imageGridView.setAdapter(adapter);
     }
 

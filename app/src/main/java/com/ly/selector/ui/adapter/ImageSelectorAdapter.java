@@ -33,12 +33,12 @@ import static android.view.View.VISIBLE;
  *          Create by 2017/5/22 10:47
  */
 
-public class GridImageAdapter extends RecyclerViewCursorAdapter<GridImageAdapter.ItemViewHolder> {
+public class ImageSelectorAdapter extends RecyclerViewCursorAdapter<ImageSelectorAdapter.ItemViewHolder> {
 
     private Context context;
     private List<String> selectedList;
 
-    public GridImageAdapter(Context context, Cursor c, List<String> selectedList) {
+    public ImageSelectorAdapter(Context context, Cursor c, List<String> selectedList) {
         super(context, c, FLAG_REGISTER_CONTENT_OBSERVER);
         this.context = context;
         this.selectedList = selectedList;

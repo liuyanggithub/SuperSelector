@@ -8,7 +8,7 @@ import com.ly.selector.basemvp.BasePresenter;
 import com.ly.selector.bean.Bucket;
 import com.ly.selector.bean.SelectorParamContext;
 import com.ly.selector.ui.adapter.BucketListAdapter;
-import com.ly.selector.ui.adapter.GridImageAdapter;
+import com.ly.selector.ui.adapter.ImageSelectorAdapter;
 import com.ly.selector.ui.view.ImageSelectorView;
 import com.ly.selector.util.MediaHelper;
 
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 public class ImageSelectorPresenter extends BasePresenter<ImageSelectorView> {
     //图片瀑布流适配器
-    private GridImageAdapter imageAdapter;
+    private ImageSelectorAdapter imageAdapter;
     //游标
     private Cursor mCursor;
     /**
@@ -80,7 +80,7 @@ public class ImageSelectorPresenter extends BasePresenter<ImageSelectorView> {
         if (imageAdapter != null) {
             imageAdapter.changeCursor(cursor);
         } else {
-            imageAdapter = new GridImageAdapter(getContext(), cursor, paramContext.getSelectedFile()) {
+            imageAdapter = new ImageSelectorAdapter(getContext(), cursor, paramContext.getSelectedFile()) {
 
                 @Override
                 public void onItemClick(ItemViewHolder holder, String path) {

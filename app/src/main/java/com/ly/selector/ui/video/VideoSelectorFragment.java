@@ -1,37 +1,35 @@
 package com.ly.selector.ui.video;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.v4.BuildConfig;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.AbsListView;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ly.selector.R;
+import com.ly.selector.basemvp.BaseFragment;
 import com.ly.selector.bean.VideoEntity;
 import com.ly.selector.customview.RecyclingImageView;
+import com.ly.selector.presenter.VideoSelectorPresenter;
+import com.ly.selector.ui.adapter.VideoSelectorAdapter;
+import com.ly.selector.ui.view.VideoSelectorView;
 import com.ly.selector.util.ImageCache;
 import com.ly.selector.util.ImageResizer;
 import com.ly.selector.util.Utils;
@@ -39,14 +37,22 @@ import com.ly.selector.util.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VideoSelectorFragment extends Fragment implements OnItemClickListener {
+import butterknife.Bind;
+
+public class VideoSelectorFragment extends BaseFragment<VideoSelectorView, VideoSelectorPresenter> implements OnItemClickListener, VideoSelectorView {
 
     private static final String TAG = "ImageGridFragment";
     private int mImageThumbSize;
     private int mImageThumbSpacing;
-    private ImageAdapter mAdapter;
+    private VideoSelectorAdapter mAdapter;
     private ImageResizer mImageResizer;
     List<VideoEntity> mList;
+
+    @Bind(R.id.gridView)
+    RecyclerView mGridView;
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     /**
      * Empty constructor as per the Fragment documentation
@@ -63,7 +69,14 @@ public class VideoSelectorFragment extends Fragment implements OnItemClickListen
                 R.dimen.image_thumbnail_spacing);
         mList = new ArrayList<VideoEntity>();
         getVideoFile();
-        mAdapter = new ImageAdapter(getActivity());
+        mAdapter = new VideoSelectorAdapter(mList, getActivity()){
+            @Override
+            public void onItemClick(VideoEntity vEntty) {
+                Intent intent = getActivity().getIntent().putExtra("path", vEntty.filePath).putExtra("dur", vEntty.duration);
+                getActivity().setResult(Activity.RESULT_OK, intent);
+                getActivity().finish();
+            }
+        };
 
         ImageCache.ImageCacheParams cacheParams = new ImageCache.ImageCacheParams();
 
@@ -80,12 +93,7 @@ public class VideoSelectorFragment extends Fragment implements OnItemClickListen
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_video_selector,
-                container, false);
-        final GridView mGridView = (GridView) v.findViewById(R.id.gridView);
-        Toolbar toolbar = (Toolbar) v.findViewById(R.id.toolbar);
+    protected void initView() {
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -95,66 +103,65 @@ public class VideoSelectorFragment extends Fragment implements OnItemClickListen
                 ((VideoSelectorActivity) getActivity()).back();
             }
         });
+        mGridView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         mGridView.setAdapter(mAdapter);
-        mGridView.setOnItemClickListener(this);
-        mGridView.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView absListView,
-                                             int scrollState) {
-                // Pause fetcher to ensure smoother scrolling when flinging
-                if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
-                    // Before Honeycomb pause image loading on scroll to help
-                    // with performance
-                    if (!Utils.hasHoneycomb()) {
-                        mImageResizer.setPauseWork(true);
-                    }
-                } else {
-                    mImageResizer.setPauseWork(false);
-                }
-            }
-
-            @Override
-            public void onScroll(AbsListView absListView, int firstVisibleItem,
-                                 int visibleItemCount, int totalItemCount) {
-            }
-        });
-
-        // This listener is used to get the final width of the GridView and then
-        // calculate the
-        // number of columns and the width of each column. The width of each
-        // column is variable
-        // as the GridView has stretchMode=columnWidth. The column width is used
-        // to set the height
-        // of each view so we get nice square thumbnails.
-        mGridView.getViewTreeObserver().addOnGlobalLayoutListener(
-                new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @TargetApi(VERSION_CODES.JELLY_BEAN)
-                    @Override
-                    public void onGlobalLayout() {
-                        final int numColumns = (int) Math.floor(mGridView
-                                .getWidth()
-                                / (mImageThumbSize + mImageThumbSpacing));
-                        if (numColumns > 0) {
-                            final int columnWidth = (mGridView.getWidth() / numColumns)
-                                    - mImageThumbSpacing;
-                            mAdapter.setItemHeight(columnWidth);
-                            if (BuildConfig.DEBUG) {
-                                Log.d(TAG,
-                                        "onCreateView - numColumns set to "
-                                                + numColumns);
-                            }
-                            if (Utils.hasJellyBean()) {
-                                mGridView.getViewTreeObserver()
-                                        .removeOnGlobalLayoutListener(this);
-                            } else {
-                                mGridView.getViewTreeObserver()
-                                        .removeGlobalOnLayoutListener(this);
-                            }
-                        }
-                    }
-                });
-        return v;
-
+//        mGridView.setOnItemClickListener(this);
+//        mGridView.setOnScrollListener(new AbsListView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(AbsListView absListView,
+//                                             int scrollState) {
+//                // Pause fetcher to ensure smoother scrolling when flinging
+//                if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
+//                    // Before Honeycomb pause image loading on scroll to help
+//                    // with performance
+//                    if (!Utils.hasHoneycomb()) {
+//                        mImageResizer.setPauseWork(true);
+//                    }
+//                } else {
+//                    mImageResizer.setPauseWork(false);
+//                }
+//            }
+//
+//            @Override
+//            public void onScroll(AbsListView absListView, int firstVisibleItem,
+//                                 int visibleItemCount, int totalItemCount) {
+//            }
+//        });
+//
+//        // This listener is used to get the final width of the GridView and then
+//        // calculate the
+//        // number of columns and the width of each column. The width of each
+//        // column is variable
+//        // as the GridView has stretchMode=columnWidth. The column width is used
+//        // to set the height
+//        // of each view so we get nice square thumbnails.
+//        mGridView.getViewTreeObserver().addOnGlobalLayoutListener(
+//                new ViewTreeObserver.OnGlobalLayoutListener() {
+//                    @TargetApi(VERSION_CODES.JELLY_BEAN)
+//                    @Override
+//                    public void onGlobalLayout() {
+//                        final int numColumns = (int) Math.floor(mGridView
+//                                .getWidth()
+//                                / (mImageThumbSize + mImageThumbSpacing));
+//                        if (numColumns > 0) {
+//                            final int columnWidth = (mGridView.getWidth() / numColumns)
+//                                    - mImageThumbSpacing;
+//                            mAdapter.setItemHeight(columnWidth);
+//                            if (BuildConfig.DEBUG) {
+//                                Log.d(TAG,
+//                                        "onCreateView - numColumns set to "
+//                                                + numColumns);
+//                            }
+//                            if (Utils.hasJellyBean()) {
+//                                mGridView.getViewTreeObserver()
+//                                        .removeOnGlobalLayoutListener(this);
+//                            } else {
+//                                mGridView.getViewTreeObserver()
+//                                        .removeGlobalOnLayoutListener(this);
+//                            }
+//                        }
+//                    }
+//                });
     }
 
     @Override
@@ -169,6 +176,16 @@ public class VideoSelectorFragment extends Fragment implements OnItemClickListen
         super.onDestroy();
         mImageResizer.closeCache();
         mImageResizer.clearCache();
+    }
+
+    @Override
+    public VideoSelectorPresenter initPresenter() {
+        return new VideoSelectorPresenter();
+    }
+
+    @Override
+    public int setContentViewID() {
+        return R.layout.fragment_video_selector;
     }
 
     @Override
@@ -196,6 +213,16 @@ public class VideoSelectorFragment extends Fragment implements OnItemClickListen
         getActivity().setResult(Activity.RESULT_OK, intent);
         getActivity().finish();
 //        }
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 
     private class ImageAdapter extends BaseAdapter {
