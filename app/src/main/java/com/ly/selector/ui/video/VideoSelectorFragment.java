@@ -44,7 +44,7 @@ public class VideoSelectorFragment extends BaseFragment<VideoSelectorView, Video
 
     private static final String TAG = "ImageGridFragment";
     private int mImageThumbSize;
-    private int mImageThumbSpacing;
+//    private int mImageThumbSpacing;
     private VideoSelectorAdapter mAdapter;
     private ImageResizer mImageResizer;
     List<VideoEntity> mList;
@@ -66,8 +66,8 @@ public class VideoSelectorFragment extends BaseFragment<VideoSelectorView, Video
         super.onCreate(savedInstanceState);
         mImageThumbSize = getResources().getDimensionPixelSize(
                 R.dimen.image_thumbnail_size);
-        mImageThumbSpacing = getResources().getDimensionPixelSize(
-                R.dimen.image_thumbnail_spacing);
+//        mImageThumbSpacing = getResources().getDimensionPixelSize(
+//                R.dimen.image_thumbnail_spacing);
         mList = new ArrayList<VideoEntity>();
         getVideoFile();
         mAdapter = new VideoSelectorAdapter(mList, getActivity()){
@@ -87,10 +87,10 @@ public class VideoSelectorFragment extends BaseFragment<VideoSelectorView, Video
 
         // The ImageFetcher takes care of loading images into our ImageView
         // children asynchronously
-        mImageResizer = new ImageResizer(getActivity(), mImageThumbSize);
-        mImageResizer.setLoadingImage(R.mipmap.video_empty_photo);
-        mImageResizer.addImageCache(getActivity().getSupportFragmentManager(),
-                cacheParams);
+//        mImageResizer = new ImageResizer(getActivity(), mImageThumbSize);
+//        mImageResizer.setLoadingImage(R.mipmap.video_empty_photo);
+//        mImageResizer.addImageCache(getActivity().getSupportFragmentManager(),
+//                cacheParams);
 
     }
 
@@ -169,15 +169,15 @@ public class VideoSelectorFragment extends BaseFragment<VideoSelectorView, Video
     @Override
     public void onResume() {
         super.onResume();
-        mImageResizer.setExitTasksEarly(false);
+//        mImageResizer.setExitTasksEarly(false);
         mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mImageResizer.closeCache();
-        mImageResizer.clearCache();
+//        mImageResizer.closeCache();
+//        mImageResizer.clearCache();
     }
 
     @Override
@@ -193,7 +193,7 @@ public class VideoSelectorFragment extends BaseFragment<VideoSelectorView, Video
     @Override
     public void onItemClick(AdapterView<?> parent, View v, final int position, long id) {
 
-        mImageResizer.setPauseWork(true);
+//        mImageResizer.setPauseWork(true);
 
 //        if (position == 0) {
 //
@@ -322,7 +322,7 @@ public class VideoSelectorFragment extends BaseFragment<VideoSelectorView, Video
             mItemHeight = height;
             mImageViewLayoutParams = new RelativeLayout.LayoutParams(
                     LayoutParams.MATCH_PARENT, mItemHeight);
-            mImageResizer.setImageSize(height);
+//            mImageResizer.setImageSize(height);
             notifyDataSetChanged();
         }
 
