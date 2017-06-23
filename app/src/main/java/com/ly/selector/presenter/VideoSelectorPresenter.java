@@ -17,6 +17,7 @@ import java.util.List;
 
 /**
  * <Pre>
+ *     视频选择界面代理
  * </Pre>
  *
  * @author 刘阳
@@ -29,6 +30,9 @@ public class VideoSelectorPresenter extends BasePresenter<VideoSelectorView> {
     private List<VideoEntity> mList = new ArrayList<>();
     private VideoSelectorAdapter mAdapter;
 
+    /**
+     * 获取视频文件列表
+     */
     public void getVideoFile() {
         ContentResolver mContentResolver = getContext().getContentResolver();
         Cursor cursor = mContentResolver.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Video.DEFAULT_SORT_ORDER);
@@ -72,6 +76,9 @@ public class VideoSelectorPresenter extends BasePresenter<VideoSelectorView> {
         }
     }
 
+    /**
+     * 设置列表Adapter
+     */
     public void setAdapter() {
         mAdapter = new VideoSelectorAdapter(mList, getContext()) {
             @Override
@@ -81,10 +88,10 @@ public class VideoSelectorPresenter extends BasePresenter<VideoSelectorView> {
                 }
                 Activity activity = (Activity) getContext();
                 // 限制大小不能超过100M
-//        if (vEntty.size > 1024 * 1024 * 100) {
-//            Toast.makeText(getActivity(), "暂不支持大于100M的视频！", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+//                if (vEntty.size > 1024 * 1024 * 100) {
+//                    Toast.makeText(getActivity(), "暂不支持大于100M的视频！", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
                 Intent intent = activity.getIntent().putExtra("path", vEntty.filePath).putExtra("dur", vEntty.duration);
                 activity.setResult(Activity.RESULT_OK, intent);
                 activity.finish();
@@ -94,6 +101,9 @@ public class VideoSelectorPresenter extends BasePresenter<VideoSelectorView> {
         getMvpView().setAdapter(mAdapter);
     }
 
+    /**
+     * 通知adapter更新
+     */
     public void notifyListRefresh() {
         mAdapter.notifyDataSetChanged();
     }
