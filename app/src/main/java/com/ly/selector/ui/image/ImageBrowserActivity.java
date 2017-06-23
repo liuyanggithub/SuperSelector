@@ -86,15 +86,6 @@ public class ImageBrowserActivity extends BaseActivity<ImageBrowserView, ImageBr
         });
     }
 
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
 
     /**
      * 图片适配器

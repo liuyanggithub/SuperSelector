@@ -3,6 +3,7 @@ package com.ly.selector;
 import android.app.Application;
 import android.content.Context;
 
+import com.ly.selector.util.ToastUtils;
 import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
@@ -29,6 +30,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        ToastUtils.register(this);
         //初始化日志工具
         Logger.init().logLevel(LogLevel.FULL);
         //LeakCanary检测OOM

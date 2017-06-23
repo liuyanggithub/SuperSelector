@@ -1,10 +1,12 @@
 package com.ly.selector.ui.view;
 
+import android.support.v7.widget.RecyclerView;
+
 import com.ly.selector.basemvp.BaseView;
 
 /**
  * <Pre>
- * TODO 描述该文件做什么
+ *     视频选择界面视图操作
  * </Pre>
  *
  * @author 刘阳
@@ -14,4 +16,5 @@ import com.ly.selector.basemvp.BaseView;
  */
 
 public interface VideoSelectorView extends BaseView {
+    void setAdapter(RecyclerView.Adapter adapter);
 }

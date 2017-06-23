@@ -429,16 +429,6 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
         Crop.of(source, mCameraCropUri).asSquare().start(this);
     }
 
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
-
     private int mNoPermissionIndex = 0;
     private final String[] permissionManifest = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,

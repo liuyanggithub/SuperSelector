@@ -136,14 +136,4 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     public int setContentViewID() {
         return R.layout.activity_main;
     }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void hideLoading() {
-
-    }
 }
