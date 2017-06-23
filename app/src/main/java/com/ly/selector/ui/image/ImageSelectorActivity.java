@@ -16,7 +16,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ly.selector.R;
 import com.ly.selector.basemvp.BaseActivity;
@@ -29,6 +28,7 @@ import com.ly.selector.ui.view.ImageSelectorView;
 import com.ly.selector.util.AnimUtil;
 import com.ly.selector.util.CommonFileUtils;
 import com.ly.selector.util.Crop;
+import com.ly.selector.util.ToastUtils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -75,7 +75,7 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
         if (paramContext.getSelectedFile().size() < 2) {
             beginCrop(Uri.fromFile(new File(paramContext.getSelectedFile().get(0))));
         } else {
-            Toast.makeText(getApplicationContext(), "选择的图片出错！", Toast.LENGTH_SHORT).show();
+            ToastUtils.showShort("选择的图片出错！");
         }
     }
 
@@ -167,7 +167,7 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
         }
         switch (requestCode) {
             case Crop.REQUEST_CROP:
-                Toast.makeText(getApplicationContext(), mCameraCropUri.getPath(),Toast.LENGTH_SHORT).show();
+                ToastUtils.showShort(mCameraCropUri.getPath());
 //                Intent intent = new Intent();
 //                intent.putExtra("crop",  mCameraCropUri.getPath());
 //                setResult(RESULT_OK, intent);
@@ -186,7 +186,7 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
                         int toastTip = noPermissionTip[i];
                         mNoPermissionIndex = i;
                         if (toastTip != 0) {
-                            Toast.makeText(getApplicationContext(), toastTip, Toast.LENGTH_SHORT);
+                            ToastUtils.showShort(toastTip);
                             finish();
                         }
                     }
@@ -343,7 +343,7 @@ public class ImageSelectorActivity extends BaseActivity<ImageSelectorView, Image
 
     @Override
     public void showMessage(String msg) {
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+        ToastUtils.showShort(msg);
     }
 
     /**

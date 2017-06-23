@@ -30,12 +30,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.ly.selector.R;
 import com.ly.selector.customview.CropImageView;
 import com.ly.selector.util.Crop;
 import com.ly.selector.util.CropUtil;
+import com.ly.selector.util.ToastUtils;
 import com.ly.selector.util.UriConvertUtil;
 
 import java.io.IOException;
@@ -123,7 +123,7 @@ public class CropImageActivity extends MonitoredActivity {
             mBitmap = BitmapFactory.decodeFile(UriConvertUtil.getImageAbsolutePath(this, sourceUri));
 
             if(mBitmap == null){
-                Toast.makeText(this, "选择的图片格式有误", Toast.LENGTH_SHORT).show();
+                ToastUtils.showShort("选择的图片格式有误");
                 return;
             }
             int maxP = Math.max(mBitmap.getWidth(), mBitmap.getHeight());

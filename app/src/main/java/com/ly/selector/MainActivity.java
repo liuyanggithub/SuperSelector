@@ -10,13 +10,13 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.PermissionChecker;
 import android.support.v7.widget.Toolbar;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.ly.selector.basemvp.BaseActivity;
 import com.ly.selector.presenter.MainPresenter;
 import com.ly.selector.ui.image.ImageSelectorActivity;
 import com.ly.selector.ui.video.VideoSelectorActivity;
 import com.ly.selector.ui.view.MainView;
+import com.ly.selector.util.ToastUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -92,7 +92,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
      * @param tip
      */
     private void showNoPermissionTip(String tip) {
-        Toast.makeText(getApplicationContext(), tip, Toast.LENGTH_SHORT).show();
+        ToastUtils.showShort(tip);
     }
     private int mNoPermissionIndex = 0;
     private final String[] permissionManifest = {
