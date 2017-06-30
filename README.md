@@ -5,7 +5,7 @@
 一款遵循**Material Design**风格的图片视频选择器
 - MVP模式，基于API25(7.1.1)开发，加入动态权限
 - 使用RecycleView展示Grid列表
-- 支持选择后预览
+- 支持选择后预览，选择一张图片时可以裁剪
 - leakcanary简单引入
 - Glide加载缓存图片
 
