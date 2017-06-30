@@ -3,7 +3,7 @@ package com.ly.selector.presenter;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.ly.selector.basemvp.BasePresenter;
+import com.ly.selector.base.BasePresenter;
 import com.ly.selector.ui.view.ImageBrowserView;
 
 import java.util.ArrayList;

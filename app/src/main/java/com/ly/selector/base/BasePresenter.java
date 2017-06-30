@@ -1,4 +1,4 @@
-package com.ly.selector.basemvp;
+package com.ly.selector.base;
 
 import android.app.Activity;
 import android.app.Application;

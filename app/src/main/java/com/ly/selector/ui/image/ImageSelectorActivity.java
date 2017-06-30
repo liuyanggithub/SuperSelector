@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.ly.selector.R;
-import com.ly.selector.basemvp.BaseActivity;
+import com.ly.selector.base.BaseActivity;
 import com.ly.selector.bean.Bucket;
 import com.ly.selector.bean.SelectorParamContext;
 import com.ly.selector.presenter.ImageSelectorPresenter;

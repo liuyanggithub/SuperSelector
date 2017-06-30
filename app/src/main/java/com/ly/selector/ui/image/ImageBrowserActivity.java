@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.ly.selector.R;
-import com.ly.selector.basemvp.BaseActivity;
+import com.ly.selector.base.BaseActivity;
 import com.ly.selector.customview.ViewPagerIndicator;
 import com.ly.selector.presenter.ImageBrowserPresenter;
 import com.ly.selector.ui.view.ImageBrowserView;

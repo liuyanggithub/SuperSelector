@@ -5,8 +5,12 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
 import android.provider.MediaStore;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
-import com.ly.selector.basemvp.BasePresenter;
+import com.ly.selector.R;
+import com.ly.selector.base.BaseAdapter;
+import com.ly.selector.base.BasePresenter;
 import com.ly.selector.bean.VideoEntity;
 import com.ly.selector.ui.adapter.VideoSelectorAdapter;
 import com.ly.selector.ui.view.VideoSelectorView;
@@ -80,10 +84,11 @@ public class VideoSelectorPresenter extends BasePresenter<VideoSelectorView> {
      * 设置列表Adapter
      */
     public void setAdapter() {
-        mAdapter = new VideoSelectorAdapter(mList, getContext()) {
+        mAdapter = new VideoSelectorAdapter(getContext(), R.layout.video_choose_griditem, mList);
+        mAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(VideoEntity vEntty) {
-                if (isActivityAlive()) {
+            public void onItemClick(View view, RecyclerView.ViewHolder viewHolder, int position) {
+                if (!isActivityAlive()) {
                     return;
                 }
                 Activity activity = (Activity) getContext();
@@ -92,12 +97,13 @@ public class VideoSelectorPresenter extends BasePresenter<VideoSelectorView> {
 //                    Toast.makeText(getActivity(), "暂不支持大于100M的视频！", Toast.LENGTH_SHORT).show();
 //                    return;
 //                }
-                Intent intent = activity.getIntent().putExtra("path", vEntty.filePath).putExtra("dur", vEntty.duration);
+                Intent intent = activity.getIntent().putExtra("path", mList.get(position).filePath).putExtra("dur", mList.get(position).duration);
                 activity.setResult(Activity.RESULT_OK, intent);
                 activity.finish();
-                ToastUtils.showShort(vEntty.filePath);
+                ToastUtils.showShort(mList.get(position).filePath);
             }
-        };
+        });
+
         getMvpView().setAdapter(mAdapter);
     }
 

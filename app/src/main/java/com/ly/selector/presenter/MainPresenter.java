@@ -1,6 +1,6 @@
 package com.ly.selector.presenter;
 
-import com.ly.selector.basemvp.BasePresenter;
+import com.ly.selector.base.BasePresenter;
 import com.ly.selector.ui.view.MainView;
 
 /**

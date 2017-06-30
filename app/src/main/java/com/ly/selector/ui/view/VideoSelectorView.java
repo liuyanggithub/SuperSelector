@@ -1,8 +1,7 @@
 package com.ly.selector.ui.view;
 
-import android.support.v7.widget.RecyclerView;
-
-import com.ly.selector.basemvp.BaseView;
+import com.ly.selector.base.BaseAdapter;
+import com.ly.selector.base.BaseView;
 
 /**
  * <Pre>
@@ -16,5 +15,5 @@ import com.ly.selector.basemvp.BaseView;
  */
 
 public interface VideoSelectorView extends BaseView {
-    void setAdapter(RecyclerView.Adapter adapter);
+    void setAdapter(BaseAdapter adapter);
 }

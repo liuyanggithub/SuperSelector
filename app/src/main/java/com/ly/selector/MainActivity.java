@@ -11,7 +11,7 @@ import android.support.v4.content.PermissionChecker;
 import android.support.v7.widget.Toolbar;
 import android.view.WindowManager;
 
-import com.ly.selector.basemvp.BaseActivity;
+import com.ly.selector.base.BaseActivity;
 import com.ly.selector.presenter.MainPresenter;
 import com.ly.selector.ui.image.ImageSelectorActivity;
 import com.ly.selector.ui.video.VideoSelectorActivity;

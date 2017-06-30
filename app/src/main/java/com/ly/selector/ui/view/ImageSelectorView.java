@@ -1,6 +1,6 @@
 package com.ly.selector.ui.view;
 
-import com.ly.selector.basemvp.BaseView;
+import com.ly.selector.base.BaseView;
 import com.ly.selector.bean.Bucket;
 import com.ly.selector.ui.adapter.BucketListAdapter;
 import com.ly.selector.ui.adapter.ImageSelectorAdapter;

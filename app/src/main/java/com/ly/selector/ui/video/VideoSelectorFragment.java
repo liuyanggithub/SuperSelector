@@ -13,7 +13,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.ly.selector.R;
-import com.ly.selector.basemvp.BaseFragment;
+import com.ly.selector.base.BaseAdapter;
+import com.ly.selector.base.BaseFragment;
 import com.ly.selector.presenter.VideoSelectorPresenter;
 import com.ly.selector.ui.view.VideoSelectorView;
 
@@ -111,7 +112,7 @@ public class VideoSelectorFragment extends BaseFragment<VideoSelectorView, Video
 
     }
     @Override
-    public void setAdapter(RecyclerView.Adapter adapter) {
+    public void setAdapter(BaseAdapter adapter) {
         mGridView.setAdapter(adapter);
     }
 }

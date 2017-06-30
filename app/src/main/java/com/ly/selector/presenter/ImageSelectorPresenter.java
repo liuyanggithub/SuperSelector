@@ -3,8 +3,12 @@ package com.ly.selector.presenter;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
-import com.ly.selector.basemvp.BasePresenter;
+import com.ly.selector.R;
+import com.ly.selector.base.BaseAdapter;
+import com.ly.selector.base.BasePresenter;
 import com.ly.selector.bean.Bucket;
 import com.ly.selector.bean.SelectorParamContext;
 import com.ly.selector.ui.adapter.BucketListAdapter;
@@ -106,17 +110,26 @@ public class ImageSelectorPresenter extends BasePresenter<ImageSelectorView> {
      * @param bucketList 相册列表数组
      * @param paramContext 配置
      */
-    public void initBucketListView(ArrayList<Bucket> bucketList, final SelectorParamContext paramContext) {
+    public void initBucketListView(final ArrayList<Bucket> bucketList, final SelectorParamContext paramContext) {
         if (bucketList == null) return;
-        BucketListAdapter adapter = new BucketListAdapter(getContext(), bucketList){
+        /*BucketListAdapter adapter = new BucketListAdapter(getContext(), bucketList){
             @Override
             public void onItemClick(Bucket bucket) {
                 getMvpView().setBucketTitleView(bucket.bucketName);
                 bindImageGridView(MediaHelper.getImagesCursor(getContext(), bucket.bucketId + ""), paramContext);
                 getMvpView().hideAlbum();
             }
-        };
-        getMvpView().setBucketListViewAdapter(adapter);
+        };*/
+        BucketListAdapter adapter1 = new BucketListAdapter(getContext(), R.layout.bucket_item, bucketList);
+        adapter1.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, RecyclerView.ViewHolder viewHolder, int position) {
+                getMvpView().setBucketTitleView(bucketList.get(position).bucketName);
+                bindImageGridView(MediaHelper.getImagesCursor(getContext(), bucketList.get(position).bucketId + ""), paramContext);
+                getMvpView().hideAlbum();
+            }
+        });
+        getMvpView().setBucketListViewAdapter(adapter1);
     }
 
     public String getPathString(ArrayList<String> list) {

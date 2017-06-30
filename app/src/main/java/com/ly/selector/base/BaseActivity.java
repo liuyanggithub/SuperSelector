@@ -1,4 +1,4 @@
-package com.ly.selector.basemvp;
+package com.ly.selector.base;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
