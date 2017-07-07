@@ -14,8 +14,7 @@ import java.lang.reflect.Type;
 
 
 /**
- * Created by haibuzou on 2017/3/29.
- * simple哥的Presenter基类，解决类View释放导致可能的空指针问题
+ * Presenter基类，解决类View释放导致可能的空指针问题
  *
  *
  * Mvp Presenter 抽象类. 通过 弱引用持有 Context 和 View对象, 避免产生内存泄露。
